@@ -1,0 +1,14 @@
+# dependencies
+/node_modules
+
+vendor/
+.vscode/
+*.db
+*.sqlite3
+
+#System Files
+.DS_Store
+Thumbs.db
+
+# ignore default binary name generated with Makefile
+todo_htmx_nj
