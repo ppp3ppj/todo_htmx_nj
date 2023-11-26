@@ -1,13 +1,16 @@
 package main
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"os"
+	"todo_htmx_nj/services"
+	"todo_htmx_nj/templates"
+
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	_ "github.com/mattn/go-sqlite3"
-    "net/http"
-    "github.com/labstack/echo/v4"
-    "github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
@@ -17,13 +20,24 @@ func main() {
 	// close database connection before exiting program.
     defer db.Close()
     e := echo.New()
+
+    memberService := &services.MemberService {
+        DB: db,
+    }
+
     e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
       Format: "method=${method}, uri=${uri}, status=${status}\n",
     }))
     e.Use(middleware.Recover())
     e.GET("/", func(c echo.Context) error {
-        return c.String(http.StatusOK, "Hello, World!")
+        members := memberService.GetAll()
+        component := templates.Index(members)
+        return component.Render(context.Background(), c.Response().Writer)
     })
+
+    e.Static("/dist", "dist")
+    e.Static("/fonts", "fonts")
+    e.Static("/static", "static")
     e.Logger.Fatal(e.Start(":1323"))
 }
 
@@ -44,7 +58,7 @@ func initDB(filepath string) *sql.DB {
 
 func migrate(db *sql.DB) {
 	sql := `
-	CREATE TABLE IF NOT EXISTS tasks(
+	CREATE TABLE IF NOT EXISTS Members(
 		id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 		name VARCHAR NOT NULL
 	);`

@@ -1,0 +1,9 @@
+package components
+
+import "todo_htmx_nj/dto"
+
+templ MemberCards(members []*dto.MemberCardDto) {
+		for _, member := range members {
+			@MemberCard(dto.MemberCardDto{Id: member.Id, Name: member.Name})
+		}
+}

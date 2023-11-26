@@ -1,0 +1,15 @@
+{
+  "name": "todo_htmx_nj",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "daisyui": "latest",
+    "tailwindcss": "^3.3.5"
+  }
+}
