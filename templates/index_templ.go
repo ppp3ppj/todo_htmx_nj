@@ -48,7 +48,7 @@ func Index(members []*dto.MemberCardDto) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Var4 := `HTMX Go Members`
+		templ_7745c5c3_Var4 := `HTMX Go CRUD`
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var4)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -71,7 +71,7 @@ func Index(members []*dto.MemberCardDto) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button><div id=\"add_member_modal_nj\" class=\"modal modal-blur fade\" style=\"display: none\" aria-hidden=\"false\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\"><div class=\"modal-content\"></div></div></div><div class=\"row row-cols-6 gap-0 column-gap-1 row-gap-1\" hx-trigger=\"every 3s\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button><div id=\"add_member_modal_nj\" class=\"modal modal-blur fade\" style=\"display: none\" aria-hidden=\"false\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\"><div class=\"modal-content\"></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -79,7 +79,7 @@ func Index(members []*dto.MemberCardDto) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

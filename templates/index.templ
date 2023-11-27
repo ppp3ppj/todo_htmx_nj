@@ -16,7 +16,7 @@ templ Index(members []*dto.MemberCardDto) {
 
     <link rel="stylesheet" href="/dist/main_or_not.css"/>
 
-      <title>HTMX Go Members</title>
+      <title>HTMX Go CRUD</title>
       <script src="/static/htmx.min.js"></script>
     </head>
     <body>
@@ -38,9 +38,8 @@ templ Index(members []*dto.MemberCardDto) {
             <div class="modal-content"></div>
         </div>
     </div>
-  <div class="row row-cols-6 gap-0 column-gap-1 row-gap-1" hx-trigger="every 3s">
+
     @components.MemberCards(members)
-  </div>
 </div>
 
    </body>

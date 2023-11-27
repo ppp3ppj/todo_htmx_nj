@@ -67,7 +67,7 @@ func main() {
         }
         memberService.Create(data)
         members := memberService.GetAll()
-        componet := templates.Index(members)
+        componet := components.MemberCards(members)
         return componet.Render(context.Background(), c.Response().Writer) 
     })
 

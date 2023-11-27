@@ -27,10 +27,10 @@ templ AddMemberModal(id int, data string, isEdit bool) {
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         if isEdit {
-            <button type="button" hx-trigger="click" hx-delete={ "/members/" + strconv.Itoa(id) }  class="btn btn-danger" data-bs-dismiss="modal">Haerin</button>
-            <button type="button" hx-trigger="click" hx-put={ "/members/" + strconv.Itoa(id) } class="btn btn-primary" data-bs-dismiss="modal">Minji</button>
+            <button type="button" hx-swap="outerHTML" hx-target="#members-list" hx-trigger="click" hx-delete={ "/members/" + strconv.Itoa(id) }  class="btn btn-danger" data-bs-dismiss="modal">Haerin</button>
+            <button type="button" hx-swap="outerHTML" hx-target="#members-list" hx-trigger="click" hx-put={ "/members/" + strconv.Itoa(id) } class="btn btn-primary" data-bs-dismiss="modal">Minji</button>
         } else {
-            <button type="button" hx-trigger="click" hx-post="/members" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+            <button type="button" hx-swap="outerHTML" hx-target="#members-list"  hx-trigger="click" hx-post="/members" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
         }
     </div>
     </form>

@@ -113,7 +113,7 @@ func AddMemberModal(id int, data string, isEdit bool) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		if isEdit {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button type=\"button\" hx-trigger=\"click\" hx-delete=\"")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button type=\"button\" hx-swap=\"outerHTML\" hx-target=\"#members-list\" hx-trigger=\"click\" hx-delete=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -130,7 +130,7 @@ func AddMemberModal(id int, data string, isEdit bool) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button> <button type=\"button\" hx-trigger=\"click\" hx-put=\"")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button> <button type=\"button\" hx-swap=\"outerHTML\" hx-target=\"#members-list\" hx-trigger=\"click\" hx-put=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -152,7 +152,7 @@ func AddMemberModal(id int, data string, isEdit bool) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		} else {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button type=\"button\" hx-trigger=\"click\" hx-post=\"/members\" class=\"btn btn-primary\" data-bs-dismiss=\"modal\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<button type=\"button\" hx-swap=\"outerHTML\" hx-target=\"#members-list\" hx-trigger=\"click\" hx-post=\"/members\" class=\"btn btn-primary\" data-bs-dismiss=\"modal\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

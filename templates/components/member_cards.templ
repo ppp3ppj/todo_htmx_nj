@@ -3,7 +3,9 @@ package components
 import "todo_htmx_nj/dto"
 
 templ MemberCards(members []*dto.MemberCardDto) {
-		for _, member := range members {
-			@MemberCard(dto.MemberCardDto{Id: member.Id, Name: member.Name})
-		}
+        <div class="row row-cols-6 gap-0 column-gap-1 row-gap-1" id="members-list">
+            for _, member := range members {
+                @MemberCard(dto.MemberCardDto{Id: member.Id, Name: member.Name})
+            }
+        </div>
 }
