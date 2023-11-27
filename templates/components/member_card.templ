@@ -1,14 +1,24 @@
 package components
 
 import "todo_htmx_nj/dto"
+import "strconv"
 
 templ MemberCard(member dto.MemberCardDto) {
-<div class="card">
+
+<div class="card p-3" id={ strconv.Itoa(member.Id)}>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBy6wh017CZoWm8B7iBmL9Tr_XtYXwUETxitt7JETWV1cmQe3AGgFArEwqVwSB1n3wdSI&usqp=CAU" class="card-img-top" alt="..."/>
+    <div hx-ext="class-tools">
   <div class="card-body">
-    <h5 class="card-title">{ member.Name }</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title demo" classes="toggle faded:1s">{ member.Name }</h5>
+    </div>
+    <p class="card-text">Newjeannnns.</p>
+    <a
+        hx-get={ "/members/" + strconv.Itoa(member.Id) }
+        hx-target="#add_member_modal_nj"
+        hx-trigger="click"
+        data-bs-toggle="modal"
+        data-bs-target="#add_member_modal_nj"
+        class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
-}
+<script src="https://unpkg.com/htmx.org/dist/ext/class-tools.js"></script>}

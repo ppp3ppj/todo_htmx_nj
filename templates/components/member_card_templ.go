@@ -11,6 +11,7 @@ import "io"
 import "bytes"
 
 import "todo_htmx_nj/dto"
+import "strconv"
 
 func MemberCard(member dto.MemberCardDto) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
@@ -25,7 +26,15 @@ func MemberCard(member dto.MemberCardDto) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card\"><img src=\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBy6wh017CZoWm8B7iBmL9Tr_XtYXwUETxitt7JETWV1cmQe3AGgFArEwqVwSB1n3wdSI&amp;usqp=CAU\" class=\"card-img-top\" alt=\"...\"><div class=\"card-body\"><h5 class=\"card-title\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"card p-3\" id=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(strconv.Itoa(member.Id)))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><img src=\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBy6wh017CZoWm8B7iBmL9Tr_XtYXwUETxitt7JETWV1cmQe3AGgFArEwqVwSB1n3wdSI&amp;usqp=CAU\" class=\"card-img-top\" alt=\"...\"><div hx-ext=\"class-tools\"><div class=\"card-body\"><h5 class=\"card-title demo\" classes=\"toggle faded:1s\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -34,16 +43,24 @@ func MemberCard(member dto.MemberCardDto) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h5><p class=\"card-text\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h5></div><p class=\"card-text\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Var3 := `Some quick example text to build on the card title and make up the bulk of the card's content.`
+		templ_7745c5c3_Var3 := `Newjeannnns.`
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var3)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><a href=\"#\" class=\"btn btn-primary\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><a hx-get=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString("/members/" + strconv.Itoa(member.Id)))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" hx-target=\"#add_member_modal_nj\" hx-trigger=\"click\" data-bs-toggle=\"modal\" data-bs-target=\"#add_member_modal_nj\" class=\"btn btn-primary\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -52,7 +69,16 @@ func MemberCard(member dto.MemberCardDto) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</a></div></div><script src=\"https://unpkg.com/htmx.org/dist/ext/class-tools.js\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Var5 := ``
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var5)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</script>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

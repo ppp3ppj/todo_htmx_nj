@@ -1,0 +1,39 @@
+package components
+
+import "strconv"
+
+templ AddMemberModal(id int, data string, isEdit bool) {
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+    if isEdit {
+      <h5 class="modal-title">Edit Member Modal</h5>
+} else {
+      <h5 class="modal-title">Create Member Modal</h5>
+}
+    </div>
+    <form>
+        <div class="modal-body text-start">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                if isEdit {
+                    <input type="text" name="edit-name-nj" class="form-control" value={ data }/>
+                } else {
+                    <input type="text" name="add-name-nj" class="form-control"/>
+                }
+            <div class="form-text">New hair, new tee NewJeans, do you see?</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        if isEdit {
+            <button type="button" hx-trigger="click" hx-delete={ "/members/" + strconv.Itoa(id) }  class="btn btn-danger" data-bs-dismiss="modal">Haerin</button>
+            <button type="button" hx-trigger="click" hx-put={ "/members/" + strconv.Itoa(id) } class="btn btn-primary" data-bs-dismiss="modal">Minji</button>
+        } else {
+            <button type="button" hx-trigger="click" hx-post="/members" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+        }
+    </div>
+    </form>
+  </div>
+</div>
+}

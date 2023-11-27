@@ -4,9 +4,12 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"net/http"
 	"os"
+	"strconv"
 	"todo_htmx_nj/services"
 	"todo_htmx_nj/templates"
+	"todo_htmx_nj/templates/components"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -25,6 +28,8 @@ func main() {
         DB: db,
     }
 
+
+    e.Use(middleware.CORS())
     e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
       Format: "method=${method}, uri=${uri}, status=${status}\n",
     }))
@@ -32,6 +37,75 @@ func main() {
     e.GET("/", func(c echo.Context) error {
         members := memberService.GetAll()
         component := templates.Index(members)
+        return component.Render(context.Background(), c.Response().Writer)
+    })
+    
+    e.GET("/add_member_modal", func(c echo.Context) error {
+        component := components.AddMemberModal(0, "", false)
+        return component.Render(context.Background(), c.Response().Writer)
+    }) 
+
+    e.GET("/members/:id", func(c echo.Context) error {
+        id := c.Param("id")
+        if id == "" {
+			return echo.NewHTTPError(http.StatusBadRequest, "Invalid id")
+        }
+        n, err := strconv.Atoi(id)
+        if err != nil {
+            fmt.Println(err)
+        }
+        info_member := memberService.Get(n)
+
+        component := components.AddMemberModal(info_member.Id, info_member.Name, true)
+        return component.Render(context.Background(), c.Response().Writer)
+    }) 
+
+    e.POST("/members", func(c echo.Context) error {
+        data := c.FormValue("add-name-nj")
+        if data == "" {
+			return echo.NewHTTPError(http.StatusBadRequest, "Invalid Data")
+        }
+        memberService.Create(data)
+        members := memberService.GetAll()
+        componet := templates.Index(members)
+        return componet.Render(context.Background(), c.Response().Writer) 
+    })
+
+    e.PUT("/members/:id", func(c echo.Context) error {
+        id := c.Param("id")
+        if id == "" {
+			return echo.NewHTTPError(http.StatusBadRequest, "Invalid id")
+        }
+        n, err := strconv.Atoi(id)
+        if err != nil {
+            fmt.Println(err)
+        }
+
+        info_member := memberService.Get(n)
+        
+        text := c.FormValue("edit-name-nj")
+        if text == "" {
+            text = info_member.Name
+        }
+
+        member := memberService.Update(n, text)
+        component := components.MemberCard(*member)
+        return component.Render(context.Background(), c.Response().Writer)
+    })
+
+    e.DELETE("/members/:id", func(c echo.Context) error {
+        id := c.Param("id")
+        if id == "" {
+			return echo.NewHTTPError(http.StatusBadRequest, "Invalid id")
+        }
+        n, err := strconv.Atoi(id)
+        if err != nil {
+            fmt.Println(err)
+        }
+
+        memberService.Delete(n)
+        members := memberService.GetAll()
+        component := components.MemberCards(members)
         return component.Render(context.Background(), c.Response().Writer)
     })
 
