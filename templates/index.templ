@@ -14,7 +14,22 @@ templ Index(members []*dto.MemberCardDto) {
 
     <script src="https://unpkg.com/htmx.org/dist/ext/class-tools.js"></script>
 
-    <link rel="stylesheet" href="/dist/main_or_not.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Mitr');
+    body {
+      --bs-font-sans-serif: 'Mitr', sans-serif;
+      --bs-body-font-family: var(--bs-font-sans-serif);
+      --bs-font-monospace: 'VT323', monospace;
+    }
+    .demo.faded {
+      opacity:.3;
+    }
+    .demo {
+      opacity:1;
+      transition: opacity ease-in 2000ms;
+    }
+  </style>
+
 
       <title>HTMX Go CRUD</title>
       <script src="/static/htmx.min.js"></script>

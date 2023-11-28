@@ -1,6 +1,0 @@
-.demo.faded {
-  opacity:.3;
-}
-.demo {
-  opacity:1;
-  transition: opacity ease-in 2000ms;

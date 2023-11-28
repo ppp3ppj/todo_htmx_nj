@@ -88,8 +88,9 @@ func main() {
             text = info_member.Name
         }
 
-        member := memberService.Update(n, text)
-        component := components.MemberCard(*member)
+        memberService.Update(n, text)
+        members := memberService.GetAll()
+        component := components.MemberCards(members)
         return component.Render(context.Background(), c.Response().Writer)
     })
 
@@ -109,8 +110,6 @@ func main() {
         return component.Render(context.Background(), c.Response().Writer)
     })
 
-    e.Static("/dist", "dist")
-    e.Static("/fonts", "fonts")
     e.Static("/static", "static")
     e.Logger.Fatal(e.Start(":1323"))
 }
