@@ -44,6 +44,14 @@ templ Index(members []*dto.MemberCardDto) {
     data-bs-target="#add_member_modal_nj"
     type="button" class="btn btn-primary btn-lg m-2">Add Member</button>
 
+    <button
+    hx-get="/add_member_10_rec"
+    hx-trigger="click delay:3s"
+    hx-swap="outerHTML"
+    hx-target="#members-list" 
+    type="button" class="btn btn-warning btn-lg m-2">Add Random 10 Member</button>
+
+
     <div id="add_member_modal_nj"
         class="modal modal-blur fade"
         style="display: none"

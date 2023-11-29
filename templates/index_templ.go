@@ -94,6 +94,15 @@ func Index(members []*dto.MemberCardDto) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button> <button hx-get=\"/add_member_10_rec\" hx-trigger=\"click delay:3s\" hx-swap=\"outerHTML\" hx-target=\"#members-list\" type=\"button\" class=\"btn btn-warning btn-lg m-2\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Var8 := `Add Random 10 Member`
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var8)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button><div id=\"add_member_modal_nj\" class=\"modal modal-blur fade\" style=\"display: none\" aria-hidden=\"false\" tabindex=\"-1\"><div class=\"modal-dialog modal-lg modal-dialog-centered\" role=\"document\"><div class=\"modal-content\"></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

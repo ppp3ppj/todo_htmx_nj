@@ -2,7 +2,9 @@ package main
 
 import (
 	"context"
+	"crypto/rand"
 	"database/sql"
+	"encoding/base64"
 	"fmt"
 	"net/http"
 	"os"
@@ -109,9 +111,26 @@ func main() {
         component := components.MemberCards(members)
         return component.Render(context.Background(), c.Response().Writer)
     })
+    e.GET("/add_member_10_rec", func(c echo.Context) error {
+        for i := 0; i < 10; i++ {
+            memberService.Create(generateRandomString(5))
+        }
+        members := memberService.GetAll()
+        componet := components.MemberCards(members)
+        return componet.Render(context.Background(), c.Response().Writer) 
+    })
 
     e.Static("/static", "static")
     e.Logger.Fatal(e.Start(":1323"))
+}
+
+func generateRandomString(length int) string {
+   b := make([]byte, length)
+   _, err := rand.Read(b)
+   if err != nil {
+      panic(err)
+   }
+   return base64.StdEncoding.EncodeToString(b)
 }
 
 func initDB(filepath string) *sql.DB {
