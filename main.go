@@ -9,9 +9,9 @@ import (
 	"net/http"
 	"os"
 	"strconv"
-	"todo_htmx_nj/services"
-	"todo_htmx_nj/templates"
-	"todo_htmx_nj/templates/components"
+	"github.com/ppp3ppj/todo_htmx_nj/services"
+	"github.com/ppp3ppj/todo_htmx_nj/templates"
+	"github.com/ppp3ppj/todo_htmx_nj/templates/components"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
