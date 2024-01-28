@@ -25,6 +25,10 @@ func main() {
 	// close database connection before exiting program.
     defer db.Close()
     e := echo.New()
+        e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+          AllowOrigins: []string{"*"},
+          AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+        }))
 
     memberService := &services.MemberService {
         DB: db,
