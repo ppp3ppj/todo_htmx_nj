@@ -3,7 +3,7 @@ package services
 import (
 	"database/sql"
 	"log"
-	"todo_htmx_nj/dto"
+	"github.com/ppp3ppj/todo_htmx_nj/dto"
 )
 
 type MemberService struct {

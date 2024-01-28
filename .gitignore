@@ -11,4 +11,6 @@ vendor/
 Thumbs.db
 
 # ignore default binary name generated with Makefile
-todo_htmx_nj
+#todo_htmx_nj
+github.com/ppp3ppj/todo_htmx_nj
+
