@@ -13,5 +13,6 @@ RUN go get \
 && go build -o /go/bin/app
 
 FROM alpine:latest
+COPY /static /static
 COPY --from=builder /go/bin/app /app
 ENTRYPOINT [ "/app" ]
